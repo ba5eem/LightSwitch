@@ -39,7 +39,7 @@ npm install --save-dev electron
 electron-packager . --overwrite --platform=darwin --arch=x64 --icon=images/icon.icns --prune=true --out=release-builds
 ```
 
-* Once Complete - you know have a Mac App to control your lights - AWESOME!
+* Once Complete - you now have a Mac App to control your lights - AWESOME!
 
 
 * This APP was inspired from a recent AT&T IoT Hackathon.
