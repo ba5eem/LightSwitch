@@ -4,6 +4,9 @@
 
 * Electron Menu Tray App - Simple on/off for your Philips Hue Light
 
+## Demo UI Screenshot:
+<img src="./img.png" width="450"/>
+
 ## Getting Started - Testing:
 
 ```js
