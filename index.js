@@ -1,36 +1,27 @@
-require('dotenv').config()
-const {app, Tray} = require('electron');
-const axios = require('axios');
 const path = require('path')
-const url = `${process.env.HUE_IP}/api/${process.env.HUE_USER}/lights/2/state`;
+const moment = require('moment');
+const { app, Menu, Tray } = require('electron');
 
-let trayIcon;
+const iconOn = 'blank.png';
+const iconPathOn = path.join(__dirname, iconOn);
 
-app.on('ready', function() {
-  
-  if(process.platform === 'darwin') app.dock.hide();
+let tray = null
 
-  const iconOn = 'images/on.png';
-  const iconPathOn = path.join(__dirname, iconOn);
-  
+app.on('ready', () => {
 
-  trayIcon = new Tray(iconPathOn);
+  tray = new Tray(iconPathOn)
+  const contextMenu = Menu.buildFromTemplate([
+      { label: 'HI', type: 'radio', checked: true },
+      { label: 'MN', type: 'radio' },
+    ])
 
-  trayIcon.on('click', (event) => {
-      axios.put(url, {"on":true})
-      .then(res => {
-        console.log('Light ON: ',res.status);
-      }).catch(err => {
-        console.log('error', err);
-      }) 
-  });
+  tray.setContextMenu(contextMenu)
 
-  trayIcon.on('double-click', (event) => {
-      axios.put(url, {"on":false})
-      .then(res => {
-        console.log('Light OFF: ',res.status);
-      }).catch(err => {
-        console.log('error', err);
-      }) 
-  });
-});
+  setInterval(() => {
+    let HI = 'HI '+ moment().utcOffset("-10:00").format('h:mm');
+    let MN = 'MN '+ moment().utcOffset("-4:00").format('h:mm');
+    tray.setTitle(contextMenu.items[0].checked ? HI : MN);
+  }, 1000)
+
+
+})
