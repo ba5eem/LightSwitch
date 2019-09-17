@@ -13,14 +13,23 @@ app.on('ready', () => {
   const contextMenu = Menu.buildFromTemplate([
       { label: 'HI', type: 'radio', checked: true },
       { label: 'MN', type: 'radio' },
+      { label: 'DC', type: 'radio' },
+      { label: 'OR', type: 'radio' },
     ])
 
   tray.setContextMenu(contextMenu)
 
   setInterval(() => {
-    let HI = 'HI '+ moment().utcOffset("-10:00").format('h:mm');
-    let MN = 'MN '+ moment().utcOffset("-4:00").format('h:mm');
-    tray.setTitle(contextMenu.items[0].checked ? HI : MN);
+    let obj = {
+      HI: 'HI '+ moment().utcOffset("-10:00").format('h:mm'),
+      MN: 'MN '+ moment().utcOffset("-05:00").format('h:mm'),
+      DC: 'DC '+ moment().utcOffset("-04:00").format('h:mm'),
+      OR: 'OR '+ moment().utcOffset("-07:00").format('h:mm')
+    }
+    let checked = contextMenu.items.filter(e => {
+      return e.checked === true
+    })
+    tray.setTitle(obj[`${checked[0].label}`]);
   }, 1000)
 
 
