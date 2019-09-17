@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/ba5eem/LightSwitch#readme",
   "dependencies": {
-    "electron": "^1.8.8",
     "moment": "^2.24.0"
+  },
+  "devDependencies": {
+    "electron": "^1.8.8",
+    "electron-packager": "^14.0.6"
   }
 }
