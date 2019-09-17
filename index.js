@@ -15,6 +15,7 @@ app.on('ready', () => {
       { label: 'MN', type: 'radio' },
       { label: 'DC', type: 'radio' },
       { label: 'OR', type: 'radio' },
+      { label: 'Quit', click: () => { app.quit(); } }
     ])
 
   tray.setContextMenu(contextMenu)
@@ -31,6 +32,8 @@ app.on('ready', () => {
     })
     tray.setTitle(obj[`${checked[0].label}`]);
   }, 1000)
+
+
 
 
 })
