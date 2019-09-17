@@ -36,4 +36,4 @@ app.on('ready', () => {
 
 
 
-})
+}).dock.hide()
