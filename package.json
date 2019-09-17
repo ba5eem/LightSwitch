@@ -18,10 +18,7 @@
   },
   "homepage": "https://github.com/ba5eem/LightSwitch#readme",
   "dependencies": {
-    "axios": "^0.18.1",
-    "dotenv": "^5.0.1",
     "electron": "^1.8.8",
-    "moment": "^2.24.0",
-    "path": "^0.12.7"
+    "moment": "^2.24.0"
   }
 }
